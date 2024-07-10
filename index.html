@@ -126,7 +126,6 @@
           color: white;
           padding: 8px 24px;
         }
-
       }
 
       .slogan {
@@ -190,6 +189,33 @@
       .components .component {
         margin: 1px 0;
       }
+
+      .hover-image {
+        position: relative;
+      }
+
+      .hover-image img {
+        position: absolute;
+        top: 35px;
+        right: 0;
+        opacity: 0;
+        width: 180px;
+        height: 300px;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .hover-image:hover img {
+        opacity: 1;
+      }
+
+      .hover-image .hidden {
+        visibility: hidden;
+      }
+
+      .hover-image:hover .hidden {
+        visibility: visible;
+      }
+
     </style>
   </head>
   <body>
@@ -204,7 +230,10 @@
         <div class="hidden">最佳实践</div>
         <div class="hidden">发布历史</div>
         <div>
-          <a class="link" href="#">技术合作</a>
+          <a class="link hover-image" href="#">
+            <span>技术合作</span>
+            <img src="qq.jpg" alt="Hover Image" class="hidden" />
+          </a>
         </div>
       </div>
     </div>
