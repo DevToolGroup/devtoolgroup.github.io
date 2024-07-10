@@ -1,354 +1,357 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>用“组件”，让“效率”发生</title>
     <style>
-      html body {
-        height: 100%;
-        width: auto;
-        margin: 0;
-        padding: 0;
-        font-family: "pingfang SC", "helvetica neue", arial, "hiragino sans gb",
-          "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
-        font-size: 14px;
-        scrollbar-width: none; /* Firefox */
-      }
-
-      /* 隐藏滚动条的样式 */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      a {
-        text-decoration: none;
-        background-color: transparent;
-        color: #000000;
-      }
-
-      blockquote {
-        padding: 10px;
-        margin: 20px;
-        border-left: 4px solid #ccc;
-        font-style: italic;
-        color: #333;
-        background-color: #f9f9f9;
-      }
-
-      @media screen and (min-width: 900px) {
-        .navbar {
-          margin: 10px auto;
-          width: 80%;
-          height: 80px;
-          line-height: 80px;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+        html body {
+          height: 100%;
+          width: auto;
+          margin: 0;
+          padding: 0;
+          font-family: "pingfang SC", "helvetica neue", arial, "hiragino sans gb",
+            "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
+          font-size: 14px;
+          scrollbar-width: none; /* Firefox */
         }
 
-        .navbar .brand {
-          flex-basis: 60%;
-
-          display: inline-block;
-          width: 65px;
-          height: 65px;
-          background: url(../logo.png);
-          background-size: auto 65px;
-          background-repeat: no-repeat;
-        }
-
-        .navbar .links {
-          flex-basis: 40%;
-
-          display: flex;
-          justify-content: space-between;
-          font-weight: 800;
-        }
-
-        .navbar .links .link {
-          text-align: center;
-          text-decoration: none;
-          background: linear-gradient(
-              115.55deg,
-              #000000,
-              rgba(255, 255, 255, 0.5) 131.3%
-            ),
-            #0a1011;
-          color: white;
-          padding: 8px 24px;
-        }
-      }
-
-      @media screen and (max-width: 900px) {
-        .navbar {
-          margin: 10px auto;
-          padding: 0 10px;
-          width: 100%;
-          height: 80px;
-          line-height: 80px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .navbar .brand {
-          display: inline-block;
-          width: 65px;
-          height: 65px;
-          background: url(../logo.png);
-          background-size: auto 65px;
-          background-repeat: no-repeat;
-          margin: 0 15px;
-        }
-
-        .navbar .links {
-          display: flex;
-          justify-content: space-between;
-          font-weight: 800;
-          gap: 10px;
-          margin-right: 30px;
-        }
-
-        .navbar .links .hidden {
+        /* 隐藏滚动条的样式 */
+        ::-webkit-scrollbar {
           display: none;
         }
 
-        .navbar .links .link {
-          text-align: center;
+        a {
           text-decoration: none;
-          background: linear-gradient(
-              115.55deg,
-              #000000,
-              rgba(255, 255, 255, 0.5) 131.3%
-            ),
-            #0a1011;
-          color: white;
-          padding: 8px 24px;
+          background-color: transparent;
+          color: #000000;
         }
 
-      }
-
-      @media screen and (max-width: 600px) {
-        .articles {
-          width: 90%;
-          margin: 0 auto;
+        blockquote {
+          padding: 10px;
+          margin: 20px;
+          border-left: 4px solid #ccc;
+          font-style: italic;
+          color: #333;
+          background-color: #f9f9f9;
         }
-      }
 
-      @media screen and (min-width: 600px) {
-        .articles {
-          width: 60%;
-          margin: 0 auto;
+        @media screen and (min-width: 900px) {
+          .navbar {
+            margin: 10px auto;
+            width: 80%;
+            height: 80px;
+            line-height: 80px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .navbar .brand {
+            flex-basis: 60%;
+
+            display: inline-block;
+            width: 65px;
+            height: 65px;
+            background: url(../logo.png);
+            background-size: auto 65px;
+            background-repeat: no-repeat;
+          }
+
+          .navbar .links {
+            flex-basis: 40%;
+
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+          }
+
+          .navbar .links .link {
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(
+                115.55deg,
+                #000000,
+                rgba(255, 255, 255, 0.5) 131.3%
+              ),
+              #0a1011;
+            color: white;
+            padding: 8px 24px;
+          }
         }
-      }
 
-      .articles > .article {
-        padding: 80px 0;
-      }
+        @media screen and (max-width: 900px) {
+          .navbar {
+            margin: 10px auto;
+            padding: 0 10px;
+            width: 100%;
+            height: 80px;
+            line-height: 80px;
 
-      .articles > .article > .title {
-        position: relative;
-        color: #212121;
-        font-size: 24px;
-        line-height: 1.3;
-        text-align: center;
-        margin: 0;
-        padding: 0 20px;
-        display: block;
-        margin-block-start: 10px;
-        margin-block-end: 10px;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: bold;
-        unicode-bidi: isolate;
-      }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .navbar .brand {
+            display: inline-block;
+            width: 65px;
+            height: 65px;
+            background: url(../logo.png);
+            background-size: auto 65px;
+            background-repeat: no-repeat;
+            margin: 0 15px;
+          }
 
-      .articles > .article > .title > a {
-        display: block;
-        color: #212121;
-      }
+          .navbar .links {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            gap: 10px;
+            margin-right: 30px;
+          }
 
-      .articles > .article > .title > a span {
-        padding-bottom: 3px;
-        -webkit-transition: 0.15s;
-        transition: 0.15s;
-        box-shadow: inset 0 -2px 0 rgba(240, 56, 56, 0);
-      }
+          .navbar .links .hidden {
+            display: none;
+          }
 
-      .articles > .article > .title > a:hover {
-        color: #212121;
-      }
+          .navbar .links .link {
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(
+                115.55deg,
+                #000000,
+                rgba(255, 255, 255, 0.5) 131.3%
+              ),
+              #0a1011;
+            color: white;
+            padding: 8px 24px;
+          }
 
-      .articles > .article > .title > a:hover span {
-        box-shadow: inset 0 -2px 0 #ccc;
-      }
+        }
 
-      .articles > .article > .meta {
-        position: relative;
-        color: #9e9e9e;
-        font-size: 13px;
-        text-align: center;
-        margin: 1rem 0;
-      }
+        @media screen and (max-width: 600px) {
+          .articles {
+            width: 90%;
+            margin: 0 auto;
+          }
+        }
 
-      .articles > .article > .body {
-        margin: 40px 0;
-        font-size: 16px;
-        color: #424242;
-        margin: 2rem 0;
-        line-height: 1.8;
-      }
+        @media screen and (min-width: 600px) {
+          .articles {
+            width: 60%;
+            margin: 0 auto;
+          }
+        }
 
-      .articles > .article > .body > h2 {
-        margin: 0;
-        font-size: 20px;
-        display: block;
-        margin-block-start: 6.7px;
-        margin-block-end: 6.7px;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: bold;
-        unicode-bidi: isolate;
-      }
+        .articles > .article {
+          padding: 80px 0;
+        }
 
-      .articles > .article > .body > p {
-        margin: 20px 0;
-        line-height: 1.8;
-        display: block;
-        margin-block-start: 10px;
-        margin-block-end: 10px;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        unicode-bidi: isolate;
-      }
+        .articles > .article > .title {
+          position: relative;
+          color: #212121;
+          font-size: 24px;
+          line-height: 1.3;
+          text-align: center;
+          margin: 0;
+          padding: 0 20px;
+          display: block;
+          margin-block-start: 10px;
+          margin-block-end: 10px;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          font-weight: bold;
+          unicode-bidi: isolate;
+        }
 
-      .articles > .article > .footer {
-        font-size: 13px;
-        color: #9e9e9e;
-        float: left;
-      }
+        .articles > .article > .title > a {
+          display: block;
+          color: #212121;
+        }
 
-      .articles > .article > .footer > span:not(:last-child) {
-        margin-right: 3rem;
-      }
+        .articles > .article > .title > a span {
+          padding-bottom: 3px;
+          -webkit-transition: 0.15s;
+          transition: 0.15s;
+          box-shadow: inset 0 -2px 0 rgba(240, 56, 56, 0);
+        }
 
-      .articles > .article > .footer > span {
-        display: inline-block;
-      }
+        .articles > .article > .title > a:hover {
+          color: #212121;
+        }
 
-      .articles > .article > .footer a {
-        color: #9e9e9e;
-      }
+        .articles > .article > .title > a:hover span {
+          box-shadow: inset 0 -2px 0 #ccc;
+        }
 
-      .articles > .article > .footer > .post-tags a:before {
-        content: "#";
-      }
+        .articles > .article > .meta {
+          position: relative;
+          color: #9e9e9e;
+          font-size: 13px;
+          text-align: center;
+          margin: 1rem 0;
+        }
 
-      .articles > .article > .footer > .post-tags a:not(:last-of-type):after {
-        content: ",";
-        padding-right: 5px;
-      }
+        .articles > .article > .body {
+          margin: 40px 0;
+          font-size: 16px;
+          color: #424242;
+          margin: 2rem 0;
+          line-height: 1.8;
+        }
 
-      .icon-tags {
-        vertical-align: middle;
-        display: inline-block;
-        width: 19px;
-        height: 16px;
-        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE5cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE5IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy40LjQgKDE3MjQ5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5TaGFwZSArIFNoYXBlPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9IkRlc2t0b3AtSEQiIHNrZXRjaDp0eXBlPSJNU0FydGJvYXJkR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMzAuMDAwMDAwLCAtNzk2LjAwMDAwMCkiIGZpbGw9IiM3NTc1NzUiPgogICAgICAgICAgICA8ZyBpZD0iQXJ0aWNsZS0yIiBza2V0Y2g6dHlwZT0iTVNMYXllckdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMzAuMDAwMDAwLCA1NTYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8ZyBpZD0idGFncyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDIzNC4wMDAwMDApIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iU2hhcGUtKy1TaGFwZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNS41LDUgQzE0LjY3Myw1IDE0LDQuMzI3IDE0LDMuNSBDMTQsMi42NzMgMTQuNjczLDIgMTUuNSwyIEMxNi4zMjcsMiAxNywyLjY3MyAxNywzLjUgQzE3LDQuMzI3IDE2LjMyNyw1IDE1LjUsNSBMMTUuNSw1IFogTTE1LjUsMyBDMTUuMjI0LDMgMTUsMy4yMjQgMTUsMy41IEMxNSwzLjc3NiAxNS4yMjQsNCAxNS41LDQgQzE1Ljc3Niw0IDE2LDMuNzc2IDE2LDMuNSBDMTYsMy4yMjQgMTUuNzc2LDMgMTUuNSwzIEwxNS41LDMgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNy41LDAgTDE0LDAgQzEzLjMxMiwwIDEyLjQyNiwwLjM2NyAxMS45MzksMC44NTQgTDQuMzUzLDguNDQgQzQuMDcsOC43MjMgMy45MTUsOS4wOTkgMy45MTUsOS41MDEgQzMuOTE1LDkuOTAzIDQuMDcxLDEwLjI3OSA0LjM1MywxMC41NjIgTDYuOTU1LDEzLjE2NCBMNS44NiwxMy43OTYgQzUuNzQ1LDEzLjg2MiA1LjYxMSwxMy44NzkgNS40ODEsMTMuODQ1IEM1LjM1MSwxMy44MTEgNS4yNDMsMTMuNzI4IDUuMTc3LDEzLjYxMyBMMS41ODEsNy4zODQgQzEuNDQzLDcuMTQ1IDEuNTI1LDYuODM5IDEuNzY0LDYuNzAxIEw5Ljc1LDIuMDkgQzkuOTg5LDEuOTUyIDEwLjA3MSwxLjY0NiA5LjkzMywxLjQwNyBDOS43OTUsMS4xNjggOS40ODksMS4wODYgOS4yNSwxLjIyNCBMMS4yNjQsNS44MzUgQzAuOTE4LDYuMDM1IDAuNjcsNi4zNTggMC41NjYsNi43NDYgQzAuNDYyLDcuMTM0IDAuNTE1LDcuNTM4IDAuNzE1LDcuODg0IEw0LjMxMSwxNC4xMTMgQzQuNTExLDE0LjQ1OSA0LjgzNCwxNC43MDcgNS4yMjIsMTQuODExIEM1LjM1MiwxNC44NDYgNS40ODQsMTQuODYzIDUuNjE0LDE0Ljg2MyBDNS44NzQsMTQuODYzIDYuMTI5LDE0Ljc5NSA2LjM2LDE0LjY2MiBMNy42ODcsMTMuODk2IEw4LjQzOSwxNC42NDggQzguNzIyLDE0LjkzMSA5LjA5OCwxNS4wODYgOS41LDE1LjA4NiBDOS45MDIsMTUuMDg2IDEwLjI3OCwxNC45MyAxMC41NjEsMTQuNjQ4IEwxOC4xNDcsNy4wNjIgQzE4LjYzNCw2LjU3NSAxOSw1LjY5IDE5LDUuMDAxIEwxOSwxLjUwMSBDMTksMC42NzQgMTguMzI3LDAuMDAxIDE3LjUsMC4wMDEgTDE3LjUsMCBaIE0xOCw1IEMxOCw1LjQxNSAxNy43MzMsNi4wNiAxNy40MzksNi4zNTQgTDkuODUzLDEzLjk0IEM5Ljc1OSwxNC4wMzQgOS42MzQsMTQuMDg1IDkuNDk5LDE0LjA4NSBDOS4zNjQsMTQuMDg1IDkuMjM5LDE0LjAzMyA5LjE0NSwxMy45NCBMNS4wNTksOS44NTQgQzQuOTY1LDkuNzYgNC45MTQsOS42MzUgNC45MTQsOS41MDEgQzQuOTE0LDkuMzY3IDQuOTY2LDkuMjQxIDUuMDU5LDkuMTQ3IEwxMi42NDUsMS41NjEgQzEyLjkzOCwxLjI2OCAxMy41ODQsMSAxMy45OTgsMSBMMTcuNDk4LDEgQzE3Ljc3NCwxIDE3Ljk5OCwxLjIyNCAxNy45OTgsMS41IEwxNy45OTgsNSBMMTgsNSBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==)
-          center center no-repeat;
-        background-size: 19px 16px;
-      }
+        .articles > .article > .body > h2 {
+          margin: 0;
+          font-size: 20px;
+          display: block;
+          margin-block-start: 6.7px;
+          margin-block-end: 6.7px;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          font-weight: bold;
+          unicode-bidi: isolate;
+        }
 
-      .icon-categories {
-        vertical-align: middle;
-        display: inline-block;
-        width: 19px;
-        height: 16px;
-        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEzcHgiIGhlaWdodD0iMTlweCIgdmlld0JveD0iMCAwIDEzIDE5IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy40LjQgKDE3MjQ5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5ib29rbWFyayBmaWxsPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Ikljb25zIiBza2V0Y2g6dHlwZT0iTVNBcnRib2FyZEdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOS4wMDAwMDAsIC0zMS4wMDAwMDApIiBmaWxsPSIjNzU3NTc1Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTIxLjUsNTAgQzIxLjM1Nyw1MCAyMS4yMTcsNDkuOTM4IDIxLjEyLDQ5LjgyNSBMMTUuNSw0My4yNjggTDkuODgsNDkuODI1IEM5Ljc0NCw0OS45ODQgOS41MjMsNTAuMDQxIDkuMzI3LDQ5Ljk2OSBDOS4xMzEsNDkuODk3IDksNDkuNzA5IDksNDkuNSBMOSwzMS41IEM5LDMxLjIyNCA5LjIyNCwzMSA5LjUsMzEgTDIxLjUsMzEgQzIxLjc3NiwzMSAyMiwzMS4yMjQgMjIsMzEuNSBMMjIsNDkuNSBDMjIsNDkuNzA5IDIxLjg3LDQ5Ljg5NiAyMS42NzMsNDkuOTY5IEMyMS42MTYsNDkuOTkgMjEuNTU4LDUwIDIxLjUsNTAgTDIxLjUsNTAgWiIgaWQ9ImJvb2ttYXJrLWZpbGwiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==)
-          center center no-repeat;
-      }
+        .articles > .article > .body > p {
+          margin: 20px 0;
+          line-height: 1.8;
+          display: block;
+          margin-block-start: 10px;
+          margin-block-end: 10px;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          unicode-bidi: isolate;
+        }
 
-      .articles > .article > .footer:after {
-        content: " ";
-        display: block;
-        clear: both;
-      }
+        .articles > .article > .footer {
+          font-size: 13px;
+          color: #9e9e9e;
+          float: left;
+        }
+
+        .articles > .article > .footer > span:not(:last-child) {
+          margin-right: 3rem;
+        }
+
+        .articles > .article > .footer > span {
+          display: inline-block;
+        }
+
+        .articles > .article > .footer a {
+          color: #9e9e9e;
+        }
+
+        .articles > .article > .footer > .post-tags a:before {
+          content: "#";
+        }
+
+        .articles > .article > .footer > .post-tags a:not(:last-of-type):after {
+          content: ",";
+          padding-right: 5px;
+        }
+
+        .icon-tags {
+          vertical-align: middle;
+          display: inline-block;
+          width: 19px;
+          height: 16px;
+          background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE5cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE5IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy40LjQgKDE3MjQ5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5TaGFwZSArIFNoYXBlPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9IkRlc2t0b3AtSEQiIHNrZXRjaDp0eXBlPSJNU0FydGJvYXJkR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMzAuMDAwMDAwLCAtNzk2LjAwMDAwMCkiIGZpbGw9IiM3NTc1NzUiPgogICAgICAgICAgICA8ZyBpZD0iQXJ0aWNsZS0yIiBza2V0Y2g6dHlwZT0iTVNMYXllckdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMzAuMDAwMDAwLCA1NTYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8ZyBpZD0idGFncyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDIzNC4wMDAwMDApIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iU2hhcGUtKy1TaGFwZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNS41LDUgQzE0LjY3Myw1IDE0LDQuMzI3IDE0LDMuNSBDMTQsMi42NzMgMTQuNjczLDIgMTUuNSwyIEMxNi4zMjcsMiAxNywyLjY3MyAxNywzLjUgQzE3LDQuMzI3IDE2LjMyNyw1IDE1LjUsNSBMMTUuNSw1IFogTTE1LjUsMyBDMTUuMjI0LDMgMTUsMy4yMjQgMTUsMy41IEMxNSwzLjc3NiAxNS4yMjQsNCAxNS41LDQgQzE1Ljc3Niw0IDE2LDMuNzc2IDE2LDMuNSBDMTYsMy4yMjQgMTUuNzc2LDMgMTUuNSwzIEwxNS41LDMgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNy41LDAgTDE0LDAgQzEzLjMxMiwwIDEyLjQyNiwwLjM2NyAxMS45MzksMC44NTQgTDQuMzUzLDguNDQgQzQuMDcsOC43MjMgMy45MTUsOS4wOTkgMy45MTUsOS41MDEgQzMuOTE1LDkuOTAzIDQuMDcxLDEwLjI3OSA0LjM1MywxMC41NjIgTDYuOTU1LDEzLjE2NCBMNS44NiwxMy43OTYgQzUuNzQ1LDEzLjg2MiA1LjYxMSwxMy44NzkgNS40ODEsMTMuODQ1IEM1LjM1MSwxMy44MTEgNS4yNDMsMTMuNzI4IDUuMTc3LDEzLjYxMyBMMS41ODEsNy4zODQgQzEuNDQzLDcuMTQ1IDEuNTI1LDYuODM5IDEuNzY0LDYuNzAxIEw5Ljc1LDIuMDkgQzkuOTg5LDEuOTUyIDEwLjA3MSwxLjY0NiA5LjkzMywxLjQwNyBDOS43OTUsMS4xNjggOS40ODksMS4wODYgOS4yNSwxLjIyNCBMMS4yNjQsNS44MzUgQzAuOTE4LDYuMDM1IDAuNjcsNi4zNTggMC41NjYsNi43NDYgQzAuNDYyLDcuMTM0IDAuNTE1LDcuNTM4IDAuNzE1LDcuODg0IEw0LjMxMSwxNC4xMTMgQzQuNTExLDE0LjQ1OSA0LjgzNCwxNC43MDcgNS4yMjIsMTQuODExIEM1LjM1MiwxNC44NDYgNS40ODQsMTQuODYzIDUuNjE0LDE0Ljg2MyBDNS44NzQsMTQuODYzIDYuMTI5LDE0Ljc5NSA2LjM2LDE0LjY2MiBMNy42ODcsMTMuODk2IEw4LjQzOSwxNC42NDggQzguNzIyLDE0LjkzMSA5LjA5OCwxNS4wODYgOS41LDE1LjA4NiBDOS45MDIsMTUuMDg2IDEwLjI3OCwxNC45MyAxMC41NjEsMTQuNjQ4IEwxOC4xNDcsNy4wNjIgQzE4LjYzNCw2LjU3NSAxOSw1LjY5IDE5LDUuMDAxIEwxOSwxLjUwMSBDMTksMC42NzQgMTguMzI3LDAuMDAxIDE3LjUsMC4wMDEgTDE3LjUsMCBaIE0xOCw1IEMxOCw1LjQxNSAxNy43MzMsNi4wNiAxNy40MzksNi4zNTQgTDkuODUzLDEzLjk0IEM5Ljc1OSwxNC4wMzQgOS42MzQsMTQuMDg1IDkuNDk5LDE0LjA4NSBDOS4zNjQsMTQuMDg1IDkuMjM5LDE0LjAzMyA5LjE0NSwxMy45NCBMNS4wNTksOS44NTQgQzQuOTY1LDkuNzYgNC45MTQsOS42MzUgNC45MTQsOS41MDEgQzQuOTE0LDkuMzY3IDQuOTY2LDkuMjQxIDUuMDU5LDkuMTQ3IEwxMi42NDUsMS41NjEgQzEyLjkzOCwxLjI2OCAxMy41ODQsMSAxMy45OTgsMSBMMTcuNDk4LDEgQzE3Ljc3NCwxIDE3Ljk5OCwxLjIyNCAxNy45OTgsMS41IEwxNy45OTgsNSBMMTgsNSBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==)
+            center center no-repeat;
+          background-size: 19px 16px;
+        }
+
+        .icon-categories {
+          vertical-align: middle;
+          display: inline-block;
+          width: 19px;
+          height: 16px;
+          background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEzcHgiIGhlaWdodD0iMTlweCIgdmlld0JveD0iMCAwIDEzIDE5IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy40LjQgKDE3MjQ5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5ib29rbWFyayBmaWxsPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Ikljb25zIiBza2V0Y2g6dHlwZT0iTVNBcnRib2FyZEdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOS4wMDAwMDAsIC0zMS4wMDAwMDApIiBmaWxsPSIjNzU3NTc1Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTIxLjUsNTAgQzIxLjM1Nyw1MCAyMS4yMTcsNDkuOTM4IDIxLjEyLDQ5LjgyNSBMMTUuNSw0My4yNjggTDkuODgsNDkuODI1IEM5Ljc0NCw0OS45ODQgOS41MjMsNTAuMDQxIDkuMzI3LDQ5Ljk2OSBDOS4xMzEsNDkuODk3IDksNDkuNzA5IDksNDkuNSBMOSwzMS41IEM5LDMxLjIyNCA5LjIyNCwzMSA5LjUsMzEgTDIxLjUsMzEgQzIxLjc3NiwzMSAyMiwzMS4yMjQgMjIsMzEuNSBMMjIsNDkuNSBDMjIsNDkuNzA5IDIxLjg3LDQ5Ljg5NiAyMS42NzMsNDkuOTY5IEMyMS42MTYsNDkuOTkgMjEuNTU4LDUwIDIxLjUsNTAgTDIxLjUsNTAgWiIgaWQ9ImJvb2ttYXJrLWZpbGwiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==)
+            center center no-repeat;
+        }
+
+        .articles > .article > .footer:after {
+          content: " ";
+          display: block;
+          clear: both;
+        }
 
     </style>
-  </head>
-  <body>
-    <div class="navbar">
-      <a href="/">
+</head>
+<body>
+<div class="navbar">
+    <a href="/">
         <div class="brand"></div>
-      </a>
-      <div class="links">
+    </a>
+    <div class="links">
         <div class="hidden">
             <a href="/library/index.html">组件库</a>
         </div>
         <div class="hidden">最佳实践</div>
         <div class="hidden">发布历史</div>
         <div>
-          <a class="link" href="#">技术合作</a>
+            <a class="link" href="#">技术合作</a>
         </div>
-      </div>
     </div>
-    <div class="articles">
-      <div class="article">
+</div>
+<div class="articles">
+    <div class="article">
         <div class="title">
-          <a href="validate/index.html">
-            <span>Validate 方法参数校验组件</span>
-          </a>
+            <a href="validate/index.html">
+                <span>Validate 方法参数校验组件</span>
+            </a>
         </div>
         <div class="meta">2024-06-15</div>
         <div class="body">
-          <h2>背景</h2>
-          <p>
-            在日常的Java项目开发过程中是参数校验一项非常基本的任务，同时也是一项比较耗时的任务，每个项目都需要写一些相同的校验逻辑，对于单一字段的参数校验可以通过注解的方式，但是对于依赖字段的参数校验，只能通过硬编码的方式实现。
-            例如： 
+            <h2>背景</h2>
+            <p>
+                在日常的Java项目开发过程中是参数校验一项非常基本的任务，同时也是一项比较耗时的任务，每个项目都需要写一些相同的校验逻辑，对于单一字段的参数校验可以通过注解的方式，但是对于依赖字段的参数校验，只能通过硬编码的方式实现。
+                例如：
             <ul>
-              <li>证件类型是身份证，证件编号必须满足身份证要求，证件类型是企业信用编码，证件编号必须满足统一信用代码的样式。</li>
-              <li>联系方式为邮箱时，号码必须满足邮箱格式，联系方式为手机时，号码必须满足手机号格式。</li>
-              <li>开始时间需要小于等于结束时间。</li>
-              <li>其他场景等。</li>
+                <li>
+                    证件类型是身份证，证件编号必须满足身份证要求，证件类型是企业信用编码，证件编号必须满足统一信用代码的样式。
+                </li>
+                <li>联系方式为邮箱时，号码必须满足邮箱格式，联系方式为手机时，号码必须满足手机号格式。</li>
+                <li>开始时间需要小于等于结束时间。</li>
+                <li>其他场景等。</li>
             </ul>
-          </p>
+            </p>
         </div>
         <div class="footer">
           <span class="post-categories">
             <i class="icon-categories"></i>
             <a href="/library/conditional/index.html">Validate</a>
           </span>
-          <span class="post-tags">
+            <span class="post-tags">
             <i class="icon-tags"></i>
             <a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/">Hibernate Validator</a>
           </span>
         </div>
-      </div>
-      <div class="article">
+    </div>
+    <div class="article">
         <div class="title">
-          <a href="conditional/index.html">
-            <span>Conditional 规则引擎组件</span>
-          </a>
+            <a href="conditional/index.html">
+                <span>Conditional 规则引擎组件</span>
+            </a>
         </div>
         <div class="meta">2024-06-15</div>
         <div class="body">
-          <h2>背景</h2>
-          <p>
-            在企业管理系统中，存在以下场景：
+            <h2>背景</h2>
+            <p>
+                在企业管理系统中，存在以下场景：
             <ul>
-              <li>
-                动态访问控制，资源的访问控制控制维度千差万别，简单的角色划分无法满足要求。引入规则引擎的话，可以将实际的业务对象传入规则引擎，业务人员根据业务对象配置访问控制权限，满足多变的访问控制要求。
-              </li>
-              <li>
-                积分赠送，在一些企业的推广营销活动时，总会制定一些积分额外赠送的优惠政策，这些政策不同时间不同地点都可能存在差异，同时又有一定的时效性，过期后又采用之前的规则。在此场景下相较于硬编码，规则引擎相对更加便捷。
-              </li>
-              <li>
-                信用风险控制、产品定价等等
-              </li>
+                <li>
+                    动态访问控制，资源的访问控制控制维度千差万别，简单的角色划分无法满足要求。引入规则引擎的话，可以将实际的业务对象传入规则引擎，业务人员根据业务对象配置访问控制权限，满足多变的访问控制要求。
+                </li>
+                <li>
+                    积分赠送，在一些企业的推广营销活动时，总会制定一些积分额外赠送的优惠政策，这些政策不同时间不同地点都可能存在差异，同时又有一定的时效性，过期后又采用之前的规则。在此场景下相较于硬编码，规则引擎相对更加便捷。
+                </li>
+                <li>
+                    信用风险控制、产品定价等等
+                </li>
             </ul>
-            基于以上场景，开发设计了 *conditional* 规则引擎组件，参考 Rete 算法实现，相较于优秀的Drools引擎，禁用了事实修改，新增，删除的场景，增加了输入参数定义，输出参数定义，约束规则引擎的行为，划分程序员与业务员的边界，降低规则复杂度，方便业务人员维护使用。
+            基于以上场景，开发设计了 *conditional* 规则引擎组件，参考 Rete
+            算法实现，相较于优秀的Drools引擎，禁用了事实修改，新增，删除的场景，增加了输入参数定义，输出参数定义，约束规则引擎的行为，划分程序员与业务员的边界，降低规则复杂度，方便业务人员维护使用。
             </p>
         </div>
         <div class="footer">
@@ -356,7 +359,7 @@
             <i class="icon-categories"></i>
             <a href="/library/conditional/index.html">Conditional</a>
           </span>
-          <span class="post-tags">
+            <span class="post-tags">
             <i class="icon-tags"></i>
             <a href="https://baike.baidu.com/item/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/3076955?fr=ge_ala">规则引擎</a
             >
@@ -364,37 +367,48 @@
             <a href="https://liteflow.cc/pages/5816c5/">小程序</a>
           </span>
         </div>
-      </div>
-      <div class="article">
+    </div>
+    <div class="article">
         <div class="title">
-          <a href="#">
-            <span>Access 访问控制组件</span>
-          </a>
+            <a href="#">
+                <span>Access 访问控制组件</span>
+            </a>
         </div>
         <div class="meta">2024-06-15</div>
         <div class="body">
-          <h2>背景</h2>
-          <p>
-            Conditional 规则引擎，参考
-            Rete算法实现，相较于优秀的Drools引擎，禁用了事实修改，新增，删除的场景，增加了输入参数定义，输出参数定义，约束规则引擎的行为，划分程序员与业务员的边界，降低规则复杂度，方便业务人员维护使用。
-          </p>
+            <h2>背景</h2>
+            <p>
+                在企业管理系统中，访问控制存在以下场景：
+            <ul>
+                <li>
+                    客户关系管理系统中，对于同一个客户，随着销售团队成员的变化，自动赋予新增成员对于客户的数据权限，操作权限。
+                </li>
+                <li>
+                    涉及状态流转的业务单据，同一角色对于同一业务单据在不同状态下有不同的操作。
+                </li>
+                <li>
+                    其他动态数据决定访问权限的场景。
+                </li>
+            </ul>
+            对于RBAC模型来说，如果满足以上场景，大部分情况下都需要额外的定制开发，另外，通过编码实现的访问控制，随着规则的变化很难直观的了解到每个资源的访问控制策略，因此，开发设计了
+            <strong>access</strong> 动态访问控制组件，通过直观的配置实现复杂的访问控制策略，尤其在涉及动态数据的访问控制时，不需求额外的开发，只需要组织好访问控制元数据，通过动态配置即可满足访问控制的要求。
+            </p>
         </div>
         <div class="footer">
           <span class="post-categories">
             <i class="icon-categories"></i>
-            <a href="/library/conditional/index.html">Conditional</a>
+            <a href="/library/access/index.html">Access</a>
           </span>
-          <span class="post-tags">
+            <span class="post-tags">
             <i class="icon-tags"></i>
-            <a
-              href="https://baike.baidu.com/item/%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E/3076955?fr=ge_ala"
-              >规则引擎</a
+            <a>访问控制</a
             >
-            <a href="https://www.drools.org/">Drools</a>
-            <a href="https://liteflow.cc/pages/5816c5/">小程序</a>
+            <a>RBAC</a>
+            <a>功能权限</a>
+            <a>数据权限</a>
           </span>
         </div>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
