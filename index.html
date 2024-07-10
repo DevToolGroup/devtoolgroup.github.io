@@ -27,7 +27,7 @@
         background-color: transparent;
         color: #000000;
       }
-      
+
       blockquote {
         padding: 10px;
         margin: 20px;
@@ -208,19 +208,4 @@
       </div>
     </div>
   </body>
-  <script>
-    document
-      .querySelector(".dropdown")
-      .addEventListener("click", function (event) {
-        if (event.target.matches(".dropbtn")) {
-          event.stopPropagation(); // 阻止事件向上冒泡到.dropdown
-          document.getElementById("dropdownMenu").classList.toggle("show");
-        } else if (!event.target.closest(".dropdown-content")) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          for (var i = 0; i < dropdowns.length; i++) {
-            dropdowns[i].classList.remove("show");
-          }
-        }
-      });
-  </script>
 </html>
