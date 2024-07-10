@@ -136,37 +136,6 @@
         margin: 1px 0;
       }
 
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-content {
-        top: 60px;
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 240px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        color: black;
-        padding: 6px 12px;
-        text-decoration: none;
-        display: block;
-        height: 30px; /* 添加这一行来设定高度 */
-        line-height: 30px;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #f1f1f1;
-      }
-
-      .show {
-        display: block;
-      }
     </style>
   </head>
   <body>
@@ -176,16 +145,7 @@
       </div>
       <div class="links">
         <div>
-          <div class="dropdown">
-            <a class="dropbtn">组件库</a>
-            <div class="dropdown-content" id="dropdownMenu">
-              <a href="./library/conditional.html">基于RETE算法的规则引擎</a>
-              <a href="./library/workflow.html">轻量级流程引擎</a>
-              <a href="./library/access.html">动态访问控制组件</a>
-              <a href="./library/validate.html">基于注解的依赖规则参数校验组件</a>
-              <a href="./library/login.html">不依赖外部框架的单点登录组件</a>
-            </div>
-          </div>
+          <a href="/library/index.html">组件库</a>
         </div>
         <div>最佳实践</div>
         <div>发布历史</div>
@@ -237,7 +197,9 @@
       </div>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center">
-      <div class="destination"><a href="./library/index.html">前往组件库</a></div>
+      <div class="destination">
+        <a href="./library/index.html">前往组件库</a>
+      </div>
     </div>
   </body>
   <script>
