@@ -1,120 +1,162 @@
 <!DOCTYPE html PUBLIC>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>用“组件”，让“效率”发生</title>
     <style>
-      html body {
-        height: 100%;
-        width: auto;
-        margin: 0;
-        padding: 0;
-        font-family: "pingfang SC", "helvetica neue", arial, "hiragino sans gb",
-          "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
-        font-size: 14px;
-        scrollbar-width: none; /* Firefox */
-      }
-
-      /* 隐藏滚动条的样式 */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      a {
-        text-decoration: none;
-        background-color: transparent;
-        color: #000000;
-      }
-
-      blockquote {
-        padding: 10px;
-        margin: 20px;
-        border-left: 4px solid #ccc;
-        font-style: italic;
-        color: #333;
-        background-color: #f9f9f9;
-      }
-
-      @media screen and (min-width: 900px) {
-        .navbar {
-          margin: 10px auto;
-          width: 80%;
-          height: 80px;
-          line-height: 80px;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .navbar .brand {
-          flex-basis: 60%;
-
-          display: inline-block;
-          width: 65px;
-          height: 65px;
-          background: url(logo.png);
-          background-size: auto 65px;
-          background-repeat: no-repeat;
-        }
-        .navbar .links {
-          flex-basis: 40%;
-
-          display: flex;
-          justify-content: space-between;
-          font-weight: 800;
+        html body {
+          height: 100%;
+          width: auto;
+          margin: 0;
+          padding: 0;
+          font-family: "pingfang SC", "helvetica neue", arial, "hiragino sans gb",
+            "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
+          font-size: 14px;
+          scrollbar-width: none; /* Firefox */
         }
 
-        .navbar .links .link {
-          text-align: center;
-          text-decoration: none;
-          background: linear-gradient(
-              115.55deg,
-              #000000,
-              rgba(255, 255, 255, 0.5) 131.3%
-            ),
-            #0a1011;
-          color: white;
-          padding: 8px 24px;
-        }
-      }
-
-      @media screen and (max-width: 900px) {
-        .navbar {
-          margin: 10px auto;
-          padding: 0 10px;
-          width: 100%;
-          height: 80px;
-          line-height: 80px;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .navbar .brand {
-          display: inline-block;
-          width: 65px;
-          height: 65px;
-          background: url(logo.png);
-          background-size: auto 65px;
-          background-repeat: no-repeat;
-          margin: 0 15px;
-        }
-
-        .navbar .links {
-          display: flex;
-          justify-content: space-between;
-          font-weight: 800;
-          gap: 10px;
-          margin-right: 30px;
-        }
-
-        .navbar .links .hidden {
+        /* 隐藏滚动条的样式 */
+        ::-webkit-scrollbar {
           display: none;
         }
 
-        .navbar .links .link {
+        a {
+          text-decoration: none;
+          background-color: transparent;
+          color: #000000;
+        }
+
+        blockquote {
+          padding: 10px;
+          margin: 20px;
+          border-left: 4px solid #ccc;
+          font-style: italic;
+          color: #333;
+          background-color: #f9f9f9;
+        }
+
+        @media screen and (min-width: 900px) {
+          .navbar {
+            margin: 10px auto;
+            width: 80%;
+            height: 80px;
+            line-height: 80px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .navbar .brand {
+            flex-basis: 60%;
+
+            display: inline-block;
+            width: 65px;
+            height: 65px;
+            background: url(logo.png);
+            background-size: auto 65px;
+            background-repeat: no-repeat;
+          }
+          .navbar .links {
+            flex-basis: 40%;
+
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+          }
+
+          .navbar .links .link {
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(
+                115.55deg,
+                #000000,
+                rgba(255, 255, 255, 0.5) 131.3%
+              ),
+              #0a1011;
+            color: white;
+            padding: 8px 24px;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
+          .navbar {
+            margin: 10px auto;
+            padding: 0 10px;
+            width: 100%;
+            height: 80px;
+            line-height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .navbar .brand {
+            display: inline-block;
+            width: 65px;
+            height: 65px;
+            background: url(logo.png);
+            background-size: auto 65px;
+            background-repeat: no-repeat;
+            margin: 0 15px;
+          }
+
+          .navbar .links {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            gap: 10px;
+            margin-right: 30px;
+          }
+
+          .navbar .links .hidden {
+            display: none;
+          }
+
+          .navbar .links .link {
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(
+                115.55deg,
+                #000000,
+                rgba(255, 255, 255, 0.5) 131.3%
+              ),
+              #0a1011;
+            color: white;
+            padding: 8px 24px;
+          }
+        }
+
+        .slogan {
+          margin: 100px auto;
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .slogan .title {
+          font-size: 42px;
+          font-weight: 900;
+        }
+
+        .slogan .by {
+          letter-spacing: 0.02px;
+          font-size: 24px;
+          font-weight: 900;
+        }
+
+        .slogan .description {
+          color: #0e0e0e;
+          font-size: 16px;
+          font-weight: 400;
+
+          margin-top: 65px;
+        }
+
+        .destination {
+          margin-top: 33px;
           text-align: center;
           text-decoration: none;
           background: linear-gradient(
@@ -126,163 +168,124 @@
           color: white;
           padding: 8px 24px;
         }
-      }
 
-      .slogan {
-        margin: 100px auto;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+        .destination > a {
+          text-decoration: none;
+          color: white;
+        }
 
-      .slogan .title {
-        font-size: 42px;
-        font-weight: 900;
-      }
+        .components {
+          width: 80%;
+          height: 200px;
+          margin-top: 100px;
+          margin-left: auto;
+          margin-right: auto;
 
-      .slogan .by {
-        letter-spacing: 0.02px;
-        font-size: 24px;
-        font-weight: 900;
-      }
+          font-size: 14px;
 
-      .slogan .description {
-        color: #0e0e0e;
-        font-size: 16px;
-        font-weight: 400;
+          overflow-y: scroll;
+        }
 
-        margin-top: 65px;
-      }
+        .components .component {
+          margin: 1px 0;
+        }
 
-      .destination {
-        margin-top: 33px;
-        text-align: center;
-        text-decoration: none;
-        background: linear-gradient(
-            115.55deg,
-            #000000,
-            rgba(255, 255, 255, 0.5) 131.3%
-          ),
-          #0a1011;
-        color: white;
-        padding: 8px 24px;
-      }
+        .hover-image {
+          position: relative;
+        }
 
-      .destination > a {
-        text-decoration: none;
-        color: white;
-      }
+        .hover-image img {
+          position: absolute;
+          top: 35px;
+          right: 0;
+          opacity: 0;
+          width: 180px;
+          height: 300px;
+          transition: opacity 0.3s ease-in-out;
+        }
 
-      .components {
-        width: 80%;
-        height: 200px;
-        margin-top: 100px;
-        margin-left: auto;
-        margin-right: auto;
+        .hover-image:hover img {
+          opacity: 1;
+        }
 
-        font-size: 14px;
+        .hover-image .hidden {
+          visibility: hidden;
+        }
 
-        overflow-y: scroll;
-      }
-
-      .components .component {
-        margin: 1px 0;
-      }
-
-      .hover-image {
-        position: relative;
-      }
-
-      .hover-image img {
-        position: absolute;
-        top: 35px;
-        right: 0;
-        opacity: 0;
-        width: 180px;
-        height: 300px;
-        transition: opacity 0.3s ease-in-out;
-      }
-
-      .hover-image:hover img {
-        opacity: 1;
-      }
-
-      .hover-image .hidden {
-        visibility: hidden;
-      }
-
-      .hover-image:hover .hidden {
-        visibility: visible;
-      }
+        .hover-image:hover .hidden {
+          visibility: visible;
+        }
 
     </style>
-  </head>
-  <body>
-    <div class="navbar">
-      <div class="brand">
+</head>
+<body>
+<div class="navbar">
+    <div class="brand">
         <a href="/"></a>
-      </div>
-      <div class="links">
+    </div>
+    <div class="links">
         <div class="hidden">
-          <a href="/library/index.html">组件库</a>
+            <a href="/library/index.html">组件库</a>
+        </div>
+        <div class="hidden">
+            <a href="https://github.com/DevToolGroup">代码仓库</a>
         </div>
         <div class="hidden">最佳实践</div>
         <div class="hidden">发布历史</div>
         <div>
-          <a class="link hover-image" href="#">
-            <span>技术合作</span>
-            <img src="qq.jpg" alt="Hover Image" class="hidden" />
-          </a>
+            <a class="link hover-image" href="#">
+                <span>技术交流</span>
+                <img src="qq.jpg" alt="Hover Image" class="hidden"/>
+            </a>
         </div>
-      </div>
     </div>
-    <div class="slogan">
-      <div class="title">用“组件”，让“效率”发生</div>
-      <div class="by">By Develop Component Group</div>
-      <div class="description">
+</div>
+<div class="slogan">
+    <div class="title">用“组件”，让“效率”发生</div>
+    <div class="by">By Develop Component Group</div>
+    <div class="description">
         “相较于传统的一揽子解决方案，希望通过一个又一个由具体问题抽象而来的组件，帮助企业搭建起属于自己特有的数字化应用。”
-      </div>
     </div>
-    <div class="components">
-      <div class="component">
+</div>
+<div class="components">
+    <div class="component">
         <blockquote>
-          <strong>规则组件（Conditional）<br /></strong>
-          ——企业产品定价涉及产品、订单、客户、合同、区域等多种因素，抽象规则引擎，相较于传统基于数据库的方式每次调整都需要调整数据库表结构，能够适用更多的场景。
+            <strong>规则组件（Conditional）<br/></strong>
+            ——企业产品定价涉及产品、订单、客户、合同、区域等多种因素，传统方式每次调整都需要调整数据库表结构，相反，规则引擎则能够更灵活的应对此类的场景。
         </blockquote>
-      </div>
-      <div class="component">
-        <blockquote>
-          <strong>访问控制组件（Access）<br /></strong>
-          ——客户资料作为企业的核心资产，不同部门、职位、销售在操作客户数据时有严格的权限限制，抽象动态访问控制引擎，相较于定制开发的硬编码方式，权限分配更加直观。
-        </blockquote>
-      </div>
-      <div class="component">
-        <blockquote>
-          <strong>参数校验组件（Validate）<br /></strong>
-          ——在企业管理系统中业务单据一般比较复杂，涉及大量信息的校验，当信息之间存在相互依赖校验时，通过在原有注解的基础上增加规则依赖，实现依赖校验，减少代码量。
-        </blockquote>
-      </div>
-      <div class="component">
-        <blockquote>
-          <strong>单点登录组件（Login）<br /></strong>
-          ——。
-        </blockquote>
-      </div>
-      <div class="component">
-        <blockquote>
-          <strong>流程引擎组件（WorkFlow）<br /></strong>
-          ——。
-        </blockquote>
-      </div>
-      <div>
-        <blockquote>更多抽象组件，建设完善中...</blockquote>
-      </div>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center">
-      <div class="destination">
+    <div class="component">
+        <blockquote>
+            <strong>访问控制组件（Access）<br/></strong>
+            ——客户资料作为企业的核心资产，不同部门、职位、销售在操作客户数据时有严格的权限限制，传统硬编码方式，重复开发而且权限配置不直观，而动态访问控制组件利用规则表达式配合动态数据，使权限配置更加直观，更灵活。
+        </blockquote>
+    </div>
+    <div class="component">
+        <blockquote>
+            <strong>参数校验组件（Validate）<br/></strong>
+            ——在企业管理系统中，业务单据一般比较复杂并且涉及大量信息的校验，当信息之间存在相互依赖校验时，通过在原有注解的基础上增加规则依赖，实现依赖校验，提高效率。
+        </blockquote>
+    </div>
+    <div class="component">
+        <blockquote>
+            <strong>流程引擎组件（WorkFlow）<br/></strong>
+            ——。
+        </blockquote>
+    </div>
+    <div class="component">
+        <blockquote>
+            <strong>单点登录组件（Login）<br/></strong>
+            ——。
+        </blockquote>
+    </div>
+    <div>
+        <blockquote>代码自动生成组件，建设中...</blockquote>
+    </div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+    <div class="destination">
         <a href="./library/index.html">前往组件库</a>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
