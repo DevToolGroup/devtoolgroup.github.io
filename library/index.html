@@ -6,7 +6,7 @@
     <title>用“组件”，让“效率”发生</title>
     <style>
       html body {
-        height: 100%;
+        min-height: 100vh;
         width: auto;
         margin: 0;
         padding: 0;
@@ -14,6 +14,10 @@
           "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
         font-size: 14px;
         scrollbar-width: none; /* Firefox */
+        background: linear-gradient(90deg, #2ca0f1d1, #ef3607);
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #ffffff;
       }
 
       /* 隐藏滚动条的样式 */
@@ -24,16 +28,7 @@
       a {
         text-decoration: none;
         background-color: transparent;
-        color: #000000;
-      }
-
-      blockquote {
-        padding: 10px;
-        margin: 20px;
-        border-left: 4px solid #ccc;
-        font-style: italic;
-        color: #333;
-        background-color: #f9f9f9;
+        color: #ffffff;
       }
 
       @media screen and (min-width: 900px) {
@@ -70,12 +65,7 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          background: linear-gradient(
-              115.55deg,
-              #000000,
-              rgba(255, 255, 255, 0.5) 131.3%
-            ),
-            #0a1011;
+          border: 1px solid white;
           color: white;
           padding: 8px 24px;
         }
@@ -118,12 +108,7 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          background: linear-gradient(
-              115.55deg,
-              #000000,
-              rgba(255, 255, 255, 0.5) 131.3%
-            ),
-            #0a1011;
+          border: 1px solid white;
           color: white;
           padding: 8px 24px;
         }
@@ -144,12 +129,15 @@
       }
 
       .articles > .article {
-        padding: 80px 0;
+        padding: 80px 60px;
+        border: 1px solid white;
+        box-shadow: 6px 6px;
+        margin-bottom: 33.33px;
       }
 
       .articles > .article > .title {
         position: relative;
-        color: #212121;
+        color: white;
         font-size: 24px;
         line-height: 1.3;
         text-align: center;
@@ -166,7 +154,7 @@
 
       .articles > .article > .title > a {
         display: block;
-        color: #212121;
+        color: white;
       }
 
       .articles > .article > .title > a span {
@@ -177,7 +165,7 @@
       }
 
       .articles > .article > .title > a:hover {
-        color: #212121;
+        color: white;
       }
 
       .articles > .article > .title > a:hover span {
@@ -186,7 +174,7 @@
 
       .articles > .article > .meta {
         position: relative;
-        color: #9e9e9e;
+        color: white;
         font-size: 13px;
         text-align: center;
         margin: 1rem 0;
@@ -195,7 +183,7 @@
       .articles > .article > .body {
         margin: 40px 0;
         font-size: 16px;
-        color: #424242;
+        color: white;
         margin: 2rem 0;
         line-height: 1.8;
       }
@@ -225,7 +213,7 @@
 
       .articles > .article > .footer {
         font-size: 13px;
-        color: #9e9e9e;
+        color: white;
         float: left;
       }
 
@@ -238,7 +226,7 @@
       }
 
       .articles > .article > .footer a {
-        color: #9e9e9e;
+        color: white;
       }
 
       .articles > .article > .footer > .post-tags a:before {
@@ -304,9 +292,10 @@
   </head>
   <body>
     <div class="navbar">
-      <a href="/">
-        <div class="brand"></div>
-      </a>
+      <div class="brand">
+        <a href="/">
+        </a>
+      </div>
       <div class="links">
         <div class="hidden">
           <a href="/library/index.html">组件库</a>
@@ -319,41 +308,44 @@
 
         <div>
           <a class="link hover-image" href="#">
-            <span>技术合作</span>
+            <span>技术交流</span>
             <img src="../qq.jpg" alt="Hover Image" class="hidden" />
           </a>
         </div>
       </div>
     </div>
-    <div class="articles">
+    <div class="articles" style="margin-top: 100px;">
       <div class="article">
         <div class="title">
           <a href="/library/conditional/index.html">
-            <span>Conditional 规则引擎组件</span>
+            <span>规则组件：Conditional</span>
           </a>
         </div>
         <div class="meta">2024-06-15</div>
         <div class="body">
           <h2>背景</h2>
           <div>
-            在企业管理系统中，存在以下场景：
+            在交付的企业数字化系统中，存在以下场景：
             <ul>
+              <li>
+                积分赠送，在企业推广营销活动时，总会制定一些积分额外赠送的优惠政策，这些政策不同时间不同地点都可能存在差异，同时又有一定的时效性，过期后又采用之前的规则。在此场景下相较于硬编码，规则引擎相对更加便捷。
+              </li>
+              <li>
+                价格政策，在产品定制化企业，产品面向不同的客户群体，不同的销售合同，价格也不尽相同，通过规则组件可以根据不同的场景，订单确定不同的价格。
+              </li>
               <li>
                 动态访问控制，资源的访问控制控制维度千差万别，简单的角色划分无法满足要求。引入规则引擎的话，可以将实际的业务对象传入规则引擎，业务人员根据业务对象配置访问控制权限，满足多变的访问控制要求。
               </li>
-              <li>
-                积分赠送，在一些企业的推广营销活动时，总会制定一些积分额外赠送的优惠政策，这些政策不同时间不同地点都可能存在差异，同时又有一定的时效性，过期后又采用之前的规则。在此场景下相较于硬编码，规则引擎相对更加便捷。
-              </li>
-              <li>信用风险控制、产品定价等等</li>
+              <li>信用风险控制等等</li>
             </ul>
-            基于以上场景，开发设计了 *conditional* 规则引擎组件，参考 Rete
+            基于以上场景，开发设计了 Conditional 规则引擎组件，参考 Rete
             算法实现，相较于优秀的Drools引擎，禁用了事实修改，新增，删除的场景，增加了输入参数定义，输出参数定义，约束规则引擎的行为，划分程序员与业务员的边界，降低规则复杂度，方便业务人员维护使用。
           </div>
         </div>
         <div class="footer">
           <span class="post-categories">
             <i class="icon-categories"></i>
-            <a href="/library/conditional/index.html">Conditional</a>
+            <a href="/library/conditional/index.html">业务组件</a>
           </span>
           <span class="post-tags">
             <i class="icon-tags"></i>
@@ -367,21 +359,61 @@
       </div>
       <div class="article">
         <div class="title">
-          <a href="/library/access/index.html">
-            <span>Access 访问控制组件</span>
+          <a href="/library/conditional/index.html">
+            <span>工作流组件：WorkFlow</span>
           </a>
         </div>
         <div class="meta">2024-06-15</div>
         <div class="body">
           <h2>背景</h2>
           <div>
-            在企业管理系统中，访问控制存在以下场景：
+            在日常的工作中，工作流引擎在以下多种业务场景下发挥着关键作用，例如：
             <ul>
               <li>
-                客户关系管理系统中，对于同一个客户，随着销售团队成员的变化，自动赋予新增成员对于客户的数据权限，操作权限。
+                审批流程：文件、合同、报销单、请假申请等需要经过多级审批的场景
               </li>
               <li>
-                涉及状态流转的业务单据，同一角色对于同一业务单据在不同状态下有不同的操作。
+                业务流程管理：采购到付款流程、销售订单处理、供应链管理等整合和自动化跨部门的业务流程
+              </li>
+              <li>
+                人力资源管理：请假申请，招聘流程、员工入职离职流程、培训安排、绩效考核等
+              </li>
+              <li>
+                文档管理：文档审批、版本控制、归档和检索流程。
+              </li>
+            </ul>
+            基于以上场景，开发设计了 WorkFlow 工作流组件，通过简单的配置，确保业务流程按照预设的规则运行，提高运营效率。
+          </div>
+        </div>
+        <div class="footer">
+          <span class="post-categories">
+            <i class="icon-categories"></i>
+            <a href="/library/workflow/index.html">WorkFlow</a>
+          </span>
+          <span class="post-tags">
+            <i class="icon-tags"></i>
+            <a>工作流引擎</a>
+            <a href="#">BPM</a>
+          </span>
+        </div>
+      </div>
+      <div class="article">
+        <div class="title">
+          <a href="/library/access/index.html">
+            <span>访问控制组件： Access</span>
+          </a>
+        </div>
+        <div class="meta">2024-06-15</div>
+        <div class="body">
+          <h2>背景</h2>
+          <div>
+            客户，订单，产品物料清单甚至库存等数据作为企业的核心资产，直观明确的资源权限控制尤为重要。例如以下场景：
+            <ul>
+              <li>
+                客户关系管理系统中，对于不同的销售，虽然都是销售的角色，但是对于同一个客户存在于客户团队成员具备客户数据的相关，不存在的无法访问相关数据。
+              </li>
+              <li>
+                其他系统中业务单据涉及状态流转时，同一角色的不同人员对于该单据在不同状态下有不同的操作，要求操作精细化到个人。
               </li>
               <li>其他动态数据决定访问权限的场景。</li>
             </ul>
@@ -407,7 +439,7 @@
       <div class="article">
         <div class="title">
           <a href="/library/validate/index.html">
-            <span>Validate 方法参数校验组件</span>
+            <span>参数校验组件：Validate</span>
           </a>
         </div>
         <div class="meta">2024-06-15</div>
@@ -436,8 +468,8 @@
           <span class="post-tags">
             <i class="icon-tags"></i>
             <a
-                    href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/"
-            >Hibernate Validator</a
+              href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/"
+              >Hibernate Validator</a
             >
           </span>
         </div>
