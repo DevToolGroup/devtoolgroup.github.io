@@ -7,7 +7,7 @@
     <title>用“组件”，让“效率”发生</title>
     <style>
       html body {
-        min-height: 100vh;
+        height: 100%;
         width: auto;
         margin: 0;
         padding: 0;
@@ -15,10 +15,6 @@
           "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
         font-size: 14px;
         scrollbar-width: none; /* Firefox */
-        background: linear-gradient(90deg, #2ca0f1d1, #ef3607);
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: #ffffff;
       }
 
       /* 隐藏滚动条的样式 */
@@ -29,16 +25,17 @@
       a {
         text-decoration: none;
         background-color: transparent;
-        color: #ffffff;
+        color: #000000;
       }
 
       blockquote {
         padding: 10px;
         margin: 20px;
-        border: 1px solid white;
-        box-shadow: 4px 6px;
+        border: 1px solid #black;
+        box-shadow: 4px 6px #efefef;
         font-style: italic;
-        color: #ffffff;
+        color: #333;
+        background-color: #f9f9f9;
       }
 
       @media screen and (min-width: 900px) {
@@ -58,7 +55,7 @@
           display: inline-block;
           width: 65px;
           height: 65px;
-          background: url(logo.png);
+          background: url(logo-black.png);
           background-size: auto 65px;
           background-repeat: no-repeat;
         }
@@ -73,8 +70,8 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          border: 1px solid white;
-          color: white;
+          border: 1px solid black;
+          color: black;
           padding: 8px 24px;
         }
       }
@@ -95,7 +92,7 @@
           display: inline-block;
           width: 65px;
           height: 65px;
-          background: url(logo.png);
+          background: url(logo-black.png);
           background-size: auto 65px;
           background-repeat: no-repeat;
           margin: 0 15px;
@@ -116,8 +113,8 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          border: 1px solid white;
-          color: white;
+          border: 1px solid black;
+          color: black;
           padding: 8px 24px;
         }
       }
@@ -142,7 +139,7 @@
       }
 
       .slogan .description {
-        color: white;
+        color: #0e0e0e;
         font-size: 16px;
         font-weight: 400;
 
@@ -153,15 +150,14 @@
         margin-top: 33px;
         text-align: center;
         text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        box-shadow: 4px 4px;
+        color: black;
+        border: 1px solid black;
         padding: 8px 24px;
       }
 
       .destination > a {
         text-decoration: none;
-        color: white;
+        color: black;
       }
 
       .components {

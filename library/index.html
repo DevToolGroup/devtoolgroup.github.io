@@ -6,7 +6,7 @@
     <title>用“组件”，让“效率”发生</title>
     <style>
       html body {
-        min-height: 100vh;
+        height: 100%;
         width: auto;
         margin: 0;
         padding: 0;
@@ -14,10 +14,6 @@
           "microsoft yahei ui", "microsoft yahei", simsun, sans-serif;
         font-size: 14px;
         scrollbar-width: none; /* Firefox */
-        background: linear-gradient(90deg, #2ca0f1d1, #ef3607);
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: #ffffff;
       }
 
       /* 隐藏滚动条的样式 */
@@ -28,7 +24,7 @@
       a {
         text-decoration: none;
         background-color: transparent;
-        color: #ffffff;
+        color: #000000;
       }
 
       @media screen and (min-width: 900px) {
@@ -47,9 +43,9 @@
           flex-basis: 60%;
 
           display: inline-block;
-          width: 65px;
+          width: 160px;
           height: 65px;
-          background: url(../logo.png);
+          background: url(../logo-black.png);
           background-size: auto 65px;
           background-repeat: no-repeat;
         }
@@ -65,8 +61,8 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          border: 1px solid white;
-          color: white;
+          border: 1px solid black;
+          color: black;
           padding: 8px 24px;
         }
       }
@@ -85,9 +81,9 @@
         }
         .navbar .brand {
           display: inline-block;
-          width: 65px;
+          width: 160px;
           height: 65px;
-          background: url(../logo.png);
+          background: url(../logo-black.png);
           background-size: auto 65px;
           background-repeat: no-repeat;
           margin: 0 15px;
@@ -108,8 +104,8 @@
         .navbar .links .link {
           text-align: center;
           text-decoration: none;
-          border: 1px solid white;
-          color: white;
+          border: 1px solid black;
+          color: black;
           padding: 8px 24px;
         }
       }
@@ -129,15 +125,12 @@
       }
 
       .articles > .article {
-        padding: 80px 60px;
-        border: 1px solid white;
-        box-shadow: 6px 6px;
-        margin-bottom: 33.33px;
+        padding: 80px 0px;
       }
 
       .articles > .article > .title {
         position: relative;
-        color: white;
+        color: #212121;
         font-size: 24px;
         line-height: 1.3;
         text-align: center;
@@ -154,7 +147,7 @@
 
       .articles > .article > .title > a {
         display: block;
-        color: white;
+        color: #212121;
       }
 
       .articles > .article > .title > a span {
@@ -165,7 +158,7 @@
       }
 
       .articles > .article > .title > a:hover {
-        color: white;
+        color: #212121;
       }
 
       .articles > .article > .title > a:hover span {
@@ -174,7 +167,7 @@
 
       .articles > .article > .meta {
         position: relative;
-        color: white;
+        color: #9e9e9e;
         font-size: 13px;
         text-align: center;
         margin: 1rem 0;
@@ -183,7 +176,7 @@
       .articles > .article > .body {
         margin: 40px 0;
         font-size: 16px;
-        color: white;
+        color: #424242;
         margin: 2rem 0;
         line-height: 1.8;
       }
@@ -213,7 +206,7 @@
 
       .articles > .article > .footer {
         font-size: 13px;
-        color: white;
+        color: #9e9e9e;
         float: left;
       }
 
@@ -226,7 +219,7 @@
       }
 
       .articles > .article > .footer a {
-        color: white;
+        color: #9e9e9e;
       }
 
       .articles > .article > .footer > .post-tags a:before {
@@ -292,10 +285,10 @@
   </head>
   <body>
     <div class="navbar">
-      <div class="brand">
         <a href="/">
+          <div class="brand">
+          </div>
         </a>
-      </div>
       <div class="links">
         <div class="hidden">
           <a href="/library/index.html">组件库</a>
@@ -314,7 +307,7 @@
         </div>
       </div>
     </div>
-    <div class="articles" style="margin-top: 100px;">
+    <div class="articles">
       <div class="article">
         <div class="title">
           <a href="/library/conditional/index.html">
